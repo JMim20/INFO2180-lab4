@@ -1,4 +1,5 @@
 let searchBtn;
+let tex;
 window.onload=function(){
 
     searchBtn=document.getElementsByClassName("btn")[0];
@@ -9,8 +10,8 @@ window.onload=function(){
         element.preventDefault();
 
         httpRequest= new XMLHttpRequest();
-
-        let searchFile = "superheroes.php";
+        tex=document.getElementById("text").value;
+        let searchFile = "superheroes.php?query=tex";
         //http://localhost/INFO2180-lab4/index.html
         httpRequest.onreadystatechange = loadList;
         httpRequest.open('GET',searchFile);
@@ -22,10 +23,24 @@ window.onload=function(){
         if (httpRequest.readyState === XMLHttpRequest.DONE){
             if(httpRequest.status ===200){
                 let response= httpRequest.responseText;
-               // let list = document.querySelector('#list')
-               alert(response);
+                //alert(response);
+                let result = document.querySelector('#result');
+                
+                superheroes
+                if(tex===""){
+
+                }else if(tex==""){
+
+                    result.innerHTML=response;
+                }else if(tex===""){
+                    result.innerHTML="SUPERHERO NOT FOUND."
+                }else{
+
+                    
+                }
+                
             } else{
-                alert('There was a problem with the request.')
+                alert('There was a problem with the request.');
             }
         }
     }

@@ -66,7 +66,26 @@ $superheroes = [
 ?>
 
 <ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
+ 
+//$t= strip_tags($_GET['tex']);
+<?php $t= filter_input($_GET['tex']);
+$output="";?>
+<?php foreach ($superheroes as $superhero):?>
+    <?php if($superhero['name']=== $t ||  $superhero['alias']=== $t)?>
+
+    <?= $superhero['<h4>name</h4>','<h3>alias</h3>', '<p>biography</p>'];?>
+
+    <?php else if($t===""):?>
+        <li><?= $superhero['alias']; ?></li> 
+    <?p
+    
 <?php endforeach; ?>
 </ul>
+if($superhero['name']=== $t ||  $superhero['alias']=== $t){
+      echo "$superhero['name'<br>,'alias'<br>, 'biography<br>'];"
+    }else if($t===""){
+        
+    }else{
+        echo "SUPERHERO NOT FOUND!"
+    }?>
+    
