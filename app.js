@@ -11,7 +11,8 @@ window.onload=function(){
 
         httpRequest= new XMLHttpRequest();
         tex=document.getElementById("text").value;
-        let searchFile = "superheroes.php?query=tex";
+        //let searchFile = "superheroes.php?query=tex";
+        let searchFile = "superheroes.php?query=" + tex; 
         //http://localhost/INFO2180-lab4/index.html
         httpRequest.onreadystatechange = loadList;
         httpRequest.open('GET',searchFile);
@@ -25,7 +26,7 @@ window.onload=function(){
                 let response= httpRequest.responseText;
                 //alert(response);
                 let result = document.querySelector('#result');
-                result.innerHTML(response)
+                result.innerHTML=response;
                 /*
                 if(tex===""){
 

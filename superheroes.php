@@ -62,8 +62,11 @@ $superheroes = [
       "biography" => "Notably powerful, Wanda Maximoff has fought both against and with the Avengers, attempting to hone her abilities and do what she believes is right to help the world.",
   ], 
 ];
-
 ?>
+
+
+
+
 <?php
 /*
 <ul>
@@ -100,8 +103,10 @@ if($superhero['name']=== $t ||  $superhero['alias']=== $t){
 */?>
 
 <?php 
-    $t= filter_input($_GET['tex']);
+
+$t = filter_input(INPUT_GET, 'query', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $output="";
+    echo $t;
 ?>
 
 <?php if ($t==""):?>
@@ -128,4 +133,4 @@ if($superhero['name']=== $t ||  $superhero['alias']=== $t){
         <?=$output['<h4>name</h4>','<h3>alias</h3>', '<p>biography</p>'];?>
     
 
-<?php endif; ?>
+<?php endif;?>
