@@ -25,8 +25,8 @@ window.onload=function(){
                 let response= httpRequest.responseText;
                 //alert(response);
                 let result = document.querySelector('#result');
-                
-                superheroes
+                result.innerHTML(response)
+                /*
                 if(tex===""){
 
                 }else if(tex==""){
@@ -37,7 +37,7 @@ window.onload=function(){
                 }else{
 
                     
-                }
+                }*/
                 
             } else{
                 alert('There was a problem with the request.');

@@ -64,12 +64,20 @@ $superheroes = [
 ];
 
 ?>
-
+<?php
+/*
 <ul>
+<?php foreach ($superheroes as $superhero): ?>
+  <li><?= $superhero['alias']; ?></li>
+<?php endforeach; ?>
+</ul>
+
+
  
 //$t= strip_tags($_GET['tex']);
 <?php $t= filter_input($_GET['tex']);
 $output="";?>
+
 <?php foreach ($superheroes as $superhero):?>
     <?php if($superhero['name']=== $t ||  $superhero['alias']=== $t)?>
 
@@ -80,7 +88,7 @@ $output="";?>
     <?p
     
 <?php endforeach; ?>
-</ul>
+
 if($superhero['name']=== $t ||  $superhero['alias']=== $t){
       echo "$superhero['name'<br>,'alias'<br>, 'biography<br>'];"
     }else if($t===""){
@@ -89,3 +97,31 @@ if($superhero['name']=== $t ||  $superhero['alias']=== $t){
         echo "SUPERHERO NOT FOUND!"
     }?>
     
+*/?>
+
+
+<?php if ($t==""):?>
+    <ul>
+    <?php foreach ($superheroes as $superhero): ?>
+    <li><?= $superhero['alias']; ?></li>
+    <?php endforeach; ?>
+    </ul>
+
+<?php else:?>
+    <?php foreach ($superheroes as $superhero):?>
+        <?php if ($superhero['name']=== $t ||  $superhero['alias']=== $t){
+            $output=$superhero;
+            break;
+
+        }else{
+            $output="not found";
+        }?>
+    <?php endforeach; ?>
+    
+    <?php if ($output=="not found"){
+        echo "SUPERHERO NOT FOUND!"
+    }else:?>
+        <?=$output['<h4>name</h4>','<h3>alias</h3>', '<p>biography</p>'];?>
+    
+
+<?php endif; ?>
