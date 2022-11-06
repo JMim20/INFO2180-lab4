@@ -99,6 +99,10 @@ if($superhero['name']=== $t ||  $superhero['alias']=== $t){
     
 */?>
 
+<?php 
+    $t= filter_input($_GET['tex']);
+    $output="";
+?>
 
 <?php if ($t==""):?>
     <ul>
