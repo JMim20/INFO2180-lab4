@@ -67,46 +67,12 @@ $superheroes = [
 
 
 
-<?php
-/*
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
 
-
- 
-//$t= strip_tags($_GET['tex']);
-<?php $t= filter_input($_GET['tex']);
-$output="";?>
-
-<?php foreach ($superheroes as $superhero):?>
-    <?php if($superhero['name']=== $t ||  $superhero['alias']=== $t)?>
-
-    <?= $superhero['<h4>name</h4>','<h3>alias</h3>', '<p>biography</p>'];?>
-
-    <?php else if($t===""):?>
-        <li><?= $superhero['alias']; ?></li> 
-    <?p
-    
-<?php endforeach; ?>
-
-if($superhero['name']=== $t ||  $superhero['alias']=== $t){
-      echo "$superhero['name'<br>,'alias'<br>, 'biography<br>'];"
-    }else if($t===""){
-        
-    }else{
-        echo "SUPERHERO NOT FOUND!"
-    }?>
-    
-*/?>
 
 <?php 
-
-$t = filter_input(INPUT_GET, 'query', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $output="";
-    echo $t;
+    $t = filter_input(INPUT_GET, 'query');
+    $output=0;
+   // echo $t;
 ?>
 
 <?php if ($t==""):?>
@@ -117,20 +83,17 @@ $t = filter_input(INPUT_GET, 'query', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     </ul>
 
 <?php else:?>
-    <?php foreach ($superheroes as $superhero):?>
-        <?php if ($superhero['name']=== $t ||  $superhero['alias']=== $t){
-            $output=$superhero;
+    <?php foreach ($superheroes as $superhero){
+        if ($superhero['name']=== $t ||  $superhero['alias']=== $t){
+            echo '<h3>' .$superhero['alias']. '</h3>'; echo '<h4> A.K.A '.$superhero['name'].'</h4>';  echo '<p>' .$superhero['biography'].'</p>';
+            $output=0;
             break;
 
         }else{
-            $output="not found";
+            $output=1;  
+        }}
+        if ($output==1){
+            echo '<h4 id="not_found"> SUPERHERO NOT FOUND!</h4>';
         }?>
-    <?php endforeach; ?>
-    
-    <?php if ($output=="not found"){
-        echo "SUPERHERO NOT FOUND!"
-    }else:?>
-        <?=$output['<h4>name</h4>','<h3>alias</h3>', '<p>biography</p>'];?>
-    
-
-<?php endif;?>
+        
+<?php endif; ?>
